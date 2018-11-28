@@ -2,7 +2,7 @@
 
 ## About
 
-This program publishes a message to an SNS topic when there are no RDS instances without specified tags.
+An AWS Lambda function that publishes a message to an SNS topic when an RDS instance without specified tags is found.
 
 ## Run locally with SAM CLI
 
