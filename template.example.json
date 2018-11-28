@@ -1,0 +1,26 @@
+{
+   "AWSTemplateFormatVersion": "2010-09-09",
+   "Description": "A serverless application to watch RDS tags and notify to a SNS topic.",
+   "Resources": {
+      "RDSTagWatcher": {
+         "Properties": {
+            "CodeUri": "./package/lambda-rds-tag-watcher.zip",
+            "FunctionName": "rds-tag-watcher",
+            "Handler": "lambda-rds-tag-watcher",
+            "MemorySize": 128,
+            "Role": "WRITE YOUR LAMBDA EXECUTION ROLE",
+            "Runtime": "go1.x",
+            "Timeout": 30,
+            "Environment": {
+              "Variables": {
+                "TAG": "Project",
+                "SNS_TOPIC_ARN": "WRITE A SNS TOPIC ARN THAT YOU WANT PUBLISH TO",
+                "RUST_LOG": "info"
+              }
+            }
+         },
+         "Type": "AWS::Serverless::Function"
+      }
+   },
+   "Transform": "AWS::Serverless-2016-10-31"
+}

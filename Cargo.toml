@@ -1,0 +1,11 @@
+[package]
+name = "lambda-rds-tag-watcher"
+version = "0.1.0"
+authors = ["mozamimy <alice@mozami.me>"]
+
+[dependencies]
+aws_lambda = { git = "https://github.com/srijs/rust-aws-lambda" }
+failure = "0.1.3"
+rusoto_core = "0.35"
+rusoto_rds = "0.35"
+rusoto_sns = "0.35"
