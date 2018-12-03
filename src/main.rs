@@ -34,7 +34,7 @@ fn main() {
             }
         }
 
-        let mut message = String::with_capacity(db_instances.len() * 80);
+        let mut db_instance_arns = Vec::new();
         let tag = std::env::var("TAG")?;
         for db_instance in &db_instances {
             match rds
@@ -47,8 +47,7 @@ fn main() {
                 Err(e) => return Err(format_err!("{:?}", e)),
                 Ok(r) => {
                     if r.tag_list.unwrap().iter().find(|&t| t.clone().key.unwrap() == tag) == None {
-                        message.push_str(&db_instance.clone().db_instance_arn.unwrap());
-                        message.push_str(&"\n");
+                        db_instance_arns.push(db_instance.clone().db_instance_arn.unwrap());
                     }
                 }
             }
@@ -58,7 +57,7 @@ fn main() {
         let mut publish_input: rusoto_sns::PublishInput = Default::default();
         publish_input.topic_arn = Some(std::env::var("SNS_TOPIC_ARN")?);
         publish_input.subject = Some(std::env::var("SNS_SUBJECT").unwrap_or(format!("*Attach {} tag please!*", tag)));
-        publish_input.message = message;
+        publish_input.message = db_instance_arns.join("\n");
 
         match sns.publish(publish_input).sync() {
             Err(e) => return Err(format_err!("{:?}", e)),
