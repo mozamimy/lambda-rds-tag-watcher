@@ -15,7 +15,8 @@
               "Variables": {
                 "TAG": "Project",
                 "SNS_TOPIC_ARN": "WRITE A SNS TOPIC ARN THAT YOU WANT PUBLISH TO",
-                "RUST_LOG": "info"
+                "RUST_LOG": "info",
+                "RUST_BACKTRACE": "1"
               }
             }
          },
