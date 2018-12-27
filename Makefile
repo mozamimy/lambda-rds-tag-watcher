@@ -1,5 +1,5 @@
 BUILD := debug
-APP_NAME := lambda-rds-tag-watcher
+APP_NAME := rds-tag-watcher
 JOBS := 4
 
 build-docker-image:

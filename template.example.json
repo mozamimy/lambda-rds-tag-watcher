@@ -4,9 +4,9 @@
    "Resources": {
       "RDSTagWatcher": {
          "Properties": {
-            "CodeUri": "./package/lambda-rds-tag-watcher.zip",
+            "CodeUri": "./package/rds-tag-watcher.zip",
             "FunctionName": "rds-tag-watcher",
-            "Handler": "lambda-rds-tag-watcher",
+            "Handler": "rds-tag-watcher",
             "MemorySize": 128,
             "Role": "WRITE YOUR LAMBDA EXECUTION ROLE",
             "Runtime": "go1.x",

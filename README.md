@@ -1,4 +1,4 @@
-# lambda-rds-tag-watcher
+# rds-tag-watcher
 
 ## About
 
