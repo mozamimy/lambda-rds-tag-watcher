@@ -1,6 +1,7 @@
 BUILD := debug
-APP_NAME := lambda-rds-tag-watcher
+APP_NAME := rds-tag-watcher
 JOBS := 4
+LOGICAL_FUNCTION_NAME := RDSTagWatcher
 
 build-docker-image:
 	docker build -t aws-lambda-rust .
@@ -16,6 +17,6 @@ zip:
 	docker-compose run builder /bin/bash -c "cp /tmp/target/${BUILD}/${APP_NAME} /workspace/package"; \
 	cd package && zip ${APP_NAME}.zip ${APP_NAME}
 run:
-	sam local invoke -e event.example.json -t template.example.json RDSTagWatcher
+	sam local invoke -e event.example.json -t template.example.json ${LOGICAL_FUNCTION_NAME}
 clean:
 	rm -rf target/debug target/release package/${APP_NAME}.zip

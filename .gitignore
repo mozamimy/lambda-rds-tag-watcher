@@ -1,5 +1,5 @@
 
 /target
 **/*.rs.bk
-package/lambda-rds-tag-watcher*
+package/rds-tag-watcher*
 .vscode
